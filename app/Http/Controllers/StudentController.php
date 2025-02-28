@@ -27,11 +27,11 @@ class StudentController extends Controller
        // dd($request->all());
         // Validate the request data
         $request->validate([
-            'name' => 'required',
+            'name' => ['required', 'regex:/^[a-zA-Z\s]+$/'],
             'email' => 'required|email|unique:students',
-            'phone' => 'required',
-            'guardian_name' => 'required',
-            'guardian_phone' => 'required',
+            'phone' => ['required', 'regex:/^\+?[0-9]{11,12}$/'],
+            'guardian_name' => ['required', 'regex:/^[a-zA-Z\s]+$/'],
+            'guardian_phone' => ['required', 'regex:/^\+?[0-9]{11,12}$/'],
             'class_id' => 'required|exists:classes,id',
             'section_id' => 'required|exists:sections,id',
         ]);
@@ -61,11 +61,11 @@ class StudentController extends Controller
     {
         // Validate the request data
         $request->validate([
-            'name' => 'required',
+            'name' => ['required', 'regex:/^[a-zA-Z\s]+$/'],
             'email' => 'required|email|unique:students,email,' . $student->id,
-            'phone' => 'required',
-            'guardian_name' => 'required',
-            'guardian_phone' => 'required',
+            'phone' => ['required', 'regex:/^\+?[0-9]{11,12}$/'],
+            'guardian_name' => ['required', 'regex:/^[a-zA-Z\s]+$/'],
+            'guardian_phone' => ['required', 'regex:/^\+?[0-9]{11,12}$/'],
             'class_id' => 'required|exists:classes,id',
             'section_id' => 'required|exists:sections,id',
         ]);
