@@ -6,7 +6,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class Student extends Model
 {
-    // Define fillable fields
     protected $fillable = [
         'name',
         'email',
@@ -25,5 +24,10 @@ class Student extends Model
     public function section()
     {
         return $this->belongsTo(Section::class, 'section_id');
+    }
+
+    public function subjects()
+    {
+        return $this->belongsToMany(Subject::class, 'student_subject', 'student_id', 'subject_id');
     }
 }

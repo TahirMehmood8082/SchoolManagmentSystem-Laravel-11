@@ -10,6 +10,11 @@ class Teacher extends Model
     use HasFactory;
 
     protected $fillable = [
-        'name', 'email', 'phone', 'subject', 'salary','address'
+        'name', 'email', 'phone', 'subject', 'salary', 'address'
     ];
+
+    public function subjects()
+    {
+        return $this->belongsToMany(Subject::class, 'teacher_subject', 'teacher_id', 'subject_id');
+    }
 }
