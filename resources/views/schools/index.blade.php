@@ -2,25 +2,25 @@
 
 @section('content')
     <div class="container">
-        <h1>Courses</h1>
-        <a href="{{ route('courses.create') }}" class="btn btn-primary">Add Course</a>
+        <h1>Schools</h1>
+        <a href="{{ route('schools.create') }}" class="btn btn-primary">Add School</a>
         <table class="table">
             <thead>
                 <tr>
                     <th>Name</th>
-                    <th>Description</th>
+                    <th>Address</th>
                     <th>Actions</th>
                 </tr>
             </thead>
             <tbody>
-                @foreach ($courses as $course)
+                @foreach ($schools as $school)
                     <tr>
-                        <td>{{ $course->name }}</td>
-                        <td>{{ $course->description }}</td>
+                        <td>{{ $school->name }}</td>
+                        <td>{{ $school->address }}</td>
                         <td>
-                            <a href="{{ route('courses.show', $course->id) }}" class="btn btn-info">Show</a>
-                            <a href="{{ route('courses.edit', $course->id) }}" class="btn btn-warning">Edit</a>
-                            <form action="{{ route('courses.destroy', $course->id) }}" method="POST" style="display:inline;">
+                            <a href="{{ route('schools.show', $school->id) }}" class="btn btn-info">Show</a>
+                            <a href="{{ route('schools.edit', $school->id) }}" class="btn btn-warning">Edit</a>
+                            <form action="{{ route('schools.destroy', $school->id) }}" method="POST" style="display:inline;">
                                 @csrf
                                 @method('DELETE')
                                 <button type="submit" class="btn btn-danger">Delete</button>
