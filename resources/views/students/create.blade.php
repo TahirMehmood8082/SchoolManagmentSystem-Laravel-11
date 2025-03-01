@@ -42,7 +42,8 @@
             </div>
             <div class="form-group">
                 <label for="class_id">Class</label>
-                <select name="class_id" class="form-control" required>
+                <select name="class_id" id="class_id" class="form-control" required>
+                    <option value="">Select Class</option>
                     @foreach ($classes as $class)
                         <option value="{{ $class->id }}" {{ old('class_id') == $class->id ? 'selected' : '' }}>{{ $class->name }}
                         </option>
@@ -52,20 +53,43 @@
                     <div class="alert alert-danger">{{ $message }}</div>
                 @enderror
             </div>
-            <div class="form-group">
+            <div class="form-group mb-3">
                 <label for="section_id">Section</label>
-                <select name="section_id" class="form-control" required>
-                    @foreach ($sections as $section)
-                        <option value="{{ $section->id }}" {{ old('section_id') == $section->id ? 'selected' : '' }}>
-                            {{ $section->name }}
-                        </option>
-                    @endforeach
+                <select name="section_id" id="section_id" class="form-control" required>
+                    <option value="">Select Section</option>
                 </select>
                 @error('section_id')
                     <div class="alert alert-danger">{{ $message }}</div>
                 @enderror
             </div>
+
             <button type="submit" class="btn btn-primary">Submit</button>
         </form>
     </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const classSelect = document.getElementById('class_id');
+            const sectionSelect = document.getElementById('section_id');
+
+            classSelect.addEventListener('change', function () {
+                const classId = this.value;
+
+                if (classId) {
+                    fetch(`/sections/by-class/${classId}`)
+                        .then(response => response.json())
+                        .then(sections => {
+                            sectionSelect.innerHTML = '<option value="">Select Section</option>'; // Clear and add default option
+                            sections.forEach(section => {
+                                const option = document.createElement('option');
+                                option.value = section.id;
+                                option.textContent = section.name;
+                                sectionSelect.appendChild(option);
+                            });
+                        });
+                } else {
+                    sectionSelect.innerHTML = '<option value="">Select Section</option>'; // Clear if no class selected
+                }
+            });
+        });
+    </script>
 @endsection
