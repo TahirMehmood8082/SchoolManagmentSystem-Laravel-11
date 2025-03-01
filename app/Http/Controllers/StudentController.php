@@ -15,11 +15,26 @@ class StudentController extends Controller
         return view('students.index', compact('students'));
     }
 
-    public function create()
+   public function create($selectedClassId = null) // Add an optional parameter
     {
-        $classes = ClassModel::all(); // Fetch all classes
-        $sections = Section::all();    // Fetch all sections
-        return view('students.create', compact('classes', 'sections'));
+        $classes = ClassModel::all();
+        $sections = Section::all();
+
+        if ($selectedClassId) {
+            $sections = Section::where('class_id', $selectedClassId)->get();
+        }
+
+        return view('students.create', [
+            'classes' => $classes,
+            'sections' => $sections,
+            'selectedClassId' => $selectedClassId,
+        ]);
+    }
+
+    public function getSectionsByClass($classId)
+    {
+        $sections = Section::where('class_id', $classId)->get();
+        return response()->json($sections);
     }
 
     public function store(Request $request)
