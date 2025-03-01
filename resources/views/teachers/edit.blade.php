@@ -23,8 +23,8 @@
                 <input type="text" name="address" class="form-control" value="{{ $teacher->address }}" required>
             </div>
             <div class="form-group">
-                <label for="subject">Subject</label>
-                <input type="text" name="subject" class="form-control" value="{{ $teacher->subject }}" required>
+                <label for="course">Course</label>
+                <input type="text" name="course" class="form-control" value="{{ $teacher->course }}" required>
             </div>
 
             <button type="submit" class="btn btn-primary">Update</button>

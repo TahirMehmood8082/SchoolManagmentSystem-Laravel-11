@@ -34,9 +34,9 @@
                 @enderror
             </div>
             <div class="form-group">
-                <label for="subject">Subject</label>
-                <input type="text" name="subject" class="form-control" value="{{ old('subject') }}" required>
-                @error('subject')
+                <label for="course">course</label>
+                <input type="text" name="course" class="form-control" value="{{ old('course') }}" required>
+                @error('course')
                     <div class="alert alert-danger">{{ $message }}</div>
                 @enderror
             </div>

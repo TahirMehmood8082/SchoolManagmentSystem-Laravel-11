@@ -35,7 +35,7 @@ class TeacherController extends Controller
             'email' => 'required|email|unique:teachers',
             'phone' => 'required',
             'address' => 'required',
-            'subject' => 'required',
+            'course' => 'required',
         ]);
 
         $data = $request->except('_token');
@@ -72,7 +72,7 @@ class TeacherController extends Controller
             'email' => 'required|email|unique:teachers,email,' . $teacher->id,
             'phone' => 'required',
             'address' => 'required',
-            'subject' => 'required',
+            'course' => 'required',
         ]);
 
         $data = $request->except('_token');
