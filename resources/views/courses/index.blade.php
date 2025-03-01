@@ -18,6 +18,7 @@
                         <td>{{ $course->name }}</td>
                         <td>{{ $course->description }}</td>
                         <td>
+                            <a href="{{ route('courses.show', $course->id) }}" class="btn btn-info">Show</a>
                             <a href="{{ route('courses.edit', $course->id) }}" class="btn btn-warning">Edit</a>
                             <form action="{{ route('courses.destroy', $course->id) }}" method="POST" style="display:inline;">
                                 @csrf
