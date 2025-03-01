@@ -37,7 +37,11 @@
             </div>
             <div class="form-group">
                 <label for="course">Course</label>
-                <input type="text" name="course" class="form-control" value="{{ $teacher->course }}" required>
+                <input type="text" name="course" class="form-control" value="{{ old('course', $teacher->course) }}"
+                    required>
+                @error('course')
+                    <div class="alert alert-danger">{{ $message }}</div>
+                @enderror
 
             </div>
             <button type="submit" class="btn btn-primary">Update</button>
