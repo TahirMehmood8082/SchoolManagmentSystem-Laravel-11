@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\SchoolController;
+use App\Http\Controllers\BranchController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\TeacherController;
 use App\Http\Controllers\CourseController;
@@ -23,6 +25,10 @@ Route::get('/', function () {
 
 // Dashboard Management
 Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+
+Route::resource('schools',SchoolController::class);
+
+Route::resource('branches', BranchController::class);
 
 Route::get('/sections/by-class/{classId}', [StudentController::class, 'getSectionsByClass']);
 

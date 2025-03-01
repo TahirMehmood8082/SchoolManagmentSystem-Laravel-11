@@ -11,6 +11,16 @@
                 </a>
             </li>
             <li class="nav-item">
+                <a class="nav-link" href="{{ route('schools.index') }}">
+                    <i class="bi bi-building"></i> Schools
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ route('branches.index') }}">
+                    <i class="bi bi-diagram-3"></i> Branches
+                </a>
+            </li>
+            <li class="nav-item">
                 <a class="nav-link" href="{{ route('students.index') }}">
                     <i class="bi bi-person-fill"></i> Students
                 </a>
