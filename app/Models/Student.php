@@ -26,8 +26,8 @@ class Student extends Model
         return $this->belongsTo(Section::class, 'section_id');
     }
 
-    public function subjects()
+    public function courses()
     {
-        return $this->belongsToMany(Subject::class, 'student_subject', 'student_id', 'subject_id');
+        return $this->belongsToMany(Course::class, 'student_course', 'student_id', 'course_id');
     }
 }

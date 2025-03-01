@@ -35,7 +35,7 @@ class TeacherController extends Controller
             'email' => 'required|email|unique:teachers',
             'phone' => ['required', 'regex:/^\+?[0-9]{11,12}$/'],
             'address' => 'required',
-            'subject' => ['required', 'regex:/^[a-zA-Z\sIVXLCDM]+$/'],
+            'course' => 'required',
         ]);
 
         $data = $request->except('_token');
@@ -72,7 +72,7 @@ class TeacherController extends Controller
             'email' => 'required|email|unique:teachers,email,' . $teacher->id,
             'phone' => ['required', 'regex:/^\+?[0-9]{11,12}$/'],
             'address' => 'required',
-            'subject' => ['required', 'regex:/^[a-zA-Z\sIVXLCDM]+$/'],
+            'course' => 'required',
         ]);
 
         $data = $request->except('_token');
